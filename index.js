@@ -7,12 +7,23 @@ var score = 0;
 const userQuestion = ["Are ARM processors based off RISC architecture? ",
                     "Do most processors from ARM use big.LITTLE architecture? ",
                     "Is Intel's i5 series of processors based off RISC architecture? ",
-                    "Are Intel's processors more power efficient than Qualcomms' Snapdragon? "
+                    "Are Intel's naming scheme of it's processors helpful to the general buyers? ",
+                    "Does Mediatek use ARM's architecture? ",
+                    "Does Apple's M1 chip use ARM architecture? "
 ];
 
-var userAnswer = ["yes","yes","no","no"];
+var userAnswer = ["yes","yes","no","no","yes","yes"];
+
+var userName;
+
+function userNameInput(){
+  userName = readlineSync.question('Enter a username: ');
+  console.log(`Welcome to the quiz ${userName}!`)
+
+}
 
 function play(){
+  userNameInput();
   for(i=0; i<userQuestion.length; i++) {
     
     let tempAnswer = readlineSync.question(userQuestion[i]).toLowerCase();
@@ -34,10 +45,10 @@ function play(){
 
 function finalMessage(){
   if(score < userQuestion.length){
-    console.log(chalk.red("You did well, GG! "));
+    console.log(chalk.red(`You did well ${userName} , GG! `));
   }
   if(score === userQuestion.length){
-    console.log(chalk.green("Wow you know well about processors, Good Job :D "));
+    console.log(chalk.green(`Wow you know well about processors ${userName}, Good Job :D `));
   }
 }
 
